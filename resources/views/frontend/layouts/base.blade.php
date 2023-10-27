@@ -5,7 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    @if(Route::is('home'))
     <title>Shofy - Multipurpose eCommerce HTML Template</title>
+    @else
+    <title>@yield('title') - Shofy - Multipurpose eCommerce HTML Template</title>
+    @endif
+    
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,6 +28,7 @@
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/flaticon_shofy.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/spacing.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/custom.css') }}">
 </head>
 
 <body>
@@ -56,11 +63,28 @@
     @endif
     <!-- header area end -->
 
-    <!-- filter offcanvas area end -->
-    @include('frontend.partials.filter')
-    <!-- filter offcanvas area end -->
-
     <main>
+
+        @if(!Route::is('home'))
+        <!-- breadcrumb area start -->
+        <section class="breadcrumb__area include-bg pt-100 pb-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xxl-12">
+                        <div class="breadcrumb__content p-relative z-index-1">
+                            <h3 class="breadcrumb__title">@yield('title')</h3>
+                            <div class="breadcrumb__list">
+                                <span><a href="{{ route('home') }}">Home</a></span>
+                                @yield('links')
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- breadcrumb area end -->
+        @endif
+
         @yield('content')
     </main>
 

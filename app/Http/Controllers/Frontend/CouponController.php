@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class CouponController extends Controller
 {
+    //show all coupons
     public function index()
     {
-        $square = false;
-        return view('frontend.home.index', compact('square'));
+        return view('frontend.coupon.index');
     }
 }

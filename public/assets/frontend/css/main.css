@@ -8664,6 +8664,7 @@ only screen and (min-width: 576px) and (max-width: 767px),
 
 .main-menu.menu-style-2>nav>ul>li>a {
   padding: 22px 0;
+  font-weight: 500;
 }
 
 .main-menu.menu-style-2>nav>ul>li:hover>a {

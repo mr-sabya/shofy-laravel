@@ -9,3 +9,6 @@
 
 <!-- compare -->
 <i class="fa-regular fa-arrows-repeat"></i>
+
+<!-- refresh -->
+<i class="fas fa-redo"></i>

@@ -99,7 +99,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-6">
                             <div class="tp-footer-copyright">
-                                <p>© 2023 All Rights Reserved | HTML Template by <a href="index.html">Themepure</a>.</p>
+                                <p>© 2023 All Rights Reserved | Developed by <a href="index.html">Sabya Roy</a>.</p>
                             </div>
                         </div>
                         <div class="col-md-6">

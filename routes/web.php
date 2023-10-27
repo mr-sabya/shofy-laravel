@@ -18,3 +18,5 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\Frontend\HomeController::class, 'index'])->name('home');
 Route::get('shop', [App\Http\Controllers\Frontend\ShopController::class, 'index'])->name('shop.index');
+Route::get('departments', [App\Http\Controllers\Frontend\DepartmentController::class, 'index'])->name('department.index');
+Route::get('coupons', [App\Http\Controllers\Frontend\CouponController::class, 'index'])->name('coupon.index');
