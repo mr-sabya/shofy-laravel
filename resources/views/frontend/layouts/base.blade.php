@@ -27,6 +27,9 @@
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/font-awesome-pro.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/flaticon_shofy.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/spacing.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('assets/frontend/vendor/toastr/toastr.min.css') }}">
+
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/custom.css') }}">
 </head>
@@ -67,7 +70,7 @@
 
         @if(!Route::is('home'))
         <!-- breadcrumb area start -->
-        <section class="breadcrumb__area include-bg pt-100 pb-50">
+        <section class="breadcrumb__area include-bg {{ Route::is('user.login') || Route::is('user.register') ? 'text-center' : '' }} pt-100 pb-50">
             <div class="container">
                 <div class="row">
                     <div class="col-xxl-12">
@@ -112,7 +115,12 @@
     <script src="{{ asset('assets/frontend/js/imagesloaded-pkgd.js') }}"></script>
     <script src="{{ asset('assets/frontend/js/ajax-form.js') }}"></script>
     <script src="{{ asset('assets/frontend/js/infinite-scroll.js') }}"></script>
+
+    <!-- toastr -->
+    <script src="{{ url('assets/frontend/vendor/toastr/toastr.min.js') }}"></script>
+
     <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
+    {!! Toastr::message() !!}
 </body>
 
 </html>

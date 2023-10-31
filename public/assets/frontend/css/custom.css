@@ -1,3 +1,16 @@
-.main_menu .active a{
+.main_menu .active a {
     color: #0989ff !important;
+}
+
+.tp-header-top-menu-item .login {
+    padding: 0;
+}
+
+.tp-header-top-menu-item .login::after {
+    display: none;
+
+}
+
+.validation-error{
+    color: rgb(255, 0, 0) !important;
 }

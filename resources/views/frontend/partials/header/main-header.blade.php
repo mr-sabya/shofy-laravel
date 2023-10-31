@@ -35,6 +35,7 @@
             <div class="col-xl-4 col-lg-3 col-md-8 col-6">
                 <div class="tp-header-main-right d-flex align-items-center justify-content-end">
                     <div class="tp-header-login d-none d-lg-block">
+                        @if(Auth::user())
                         <a href="profile.html" class="d-flex align-items-center">
                             <div class="tp-header-login-icon">
                                 <span>
@@ -49,6 +50,19 @@
                                 <h5 class="tp-header-login-title">Your Account</h5>
                             </div>
                         </a>
+                        @else
+                        <a href="user.login" class="d-flex align-items-center">
+                            <div class="tp-header-login-icon">
+                                <span style="font-size: 20px;">
+                                    <i class="far fa-user"></i>
+                                </span>
+                            </div>
+                            <div class="tp-header-login-content d-none d-xl-block">
+                                <span>Hello, Sign In</span>
+                                <h5 class="tp-header-login-title">Your Account</h5>
+                            </div>
+                        </a>
+                        @endif
                     </div>
                     <!-- action start -->
                     <div class="tp-header-action d-flex align-items-center ml-50">

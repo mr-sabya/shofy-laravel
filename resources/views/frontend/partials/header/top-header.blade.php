@@ -49,6 +49,7 @@
                             </ul>
                         </div>
                         <div class="tp-header-top-menu-item tp-header-setting">
+                            @if(Auth::user())
                             <span class="tp-header-setting-toggle" id="tp-header-setting-toggle">Setting</span>
                             <ul>
                                 <li>
@@ -64,6 +65,9 @@
                                     <a href="login.html">Logout</a>
                                 </li>
                             </ul>
+                            @else
+                            <span class="login"><a href="{{ route('user.login') }}">Login</a></span>
+                            @endif
                         </div>
                     </div>
                 </div>
