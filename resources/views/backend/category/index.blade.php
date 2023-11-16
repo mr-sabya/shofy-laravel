@@ -26,6 +26,7 @@
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>Slug</th>
+                                <th>Department</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -151,6 +152,10 @@
                 name: 'slug'
             },
             {
+                data: 'department',
+                name: 'department'
+            },
+            {
                 data: 'action',
                 name: 'action',
                 orderable: false
@@ -199,11 +204,11 @@
         var action_url = '';
 
         if ($('#action').val() == 'Add') {
-            action_url = "{{ route('admin.department.store') }}";
+            action_url = "{{ route('admin.category.store') }}";
         }
 
         if ($('#action').val() == 'Edit') {
-            action_url = "{{ route('admin.department.update') }}";
+            action_url = "{{ route('admin.category.update') }}";
         }
 
         $.ajax({
@@ -226,7 +231,7 @@
                 }
 
                 if (data.icon_error) {
-                    $('#icon_error').html(data.icon_error)
+                    $('#department_error').html(data.department_error)
                 }
 
                 if (data.image_error) {
@@ -258,12 +263,22 @@
         resetError();
 
         $.ajax({
-            url: "/admin/department/" + id + "/edit",
+            url: "/admin/category/" + id + "/edit",
             dataType: "json",
             success: function(data) {
-                $('#title').val(data.department.title);
-                $('#slug').val(data.department.slug);
-                $('#icon').val(data.department.icon);
+                $('#title').val(data.category.title);
+                $('#slug').val(data.category.slug);
+
+                // get department
+                $.ajax({
+                    url: "/admin/get-department-select-option/" + id,
+                    dataType: "json",
+                    success: function(data) {
+                        $('#department_id').append(data.data);
+                    }
+
+                });
+
                 $('#hidden_id').val(id);
                 $('.modal-title').text('Edit Department');
                 $('#action_button').html('Update');
@@ -271,10 +286,12 @@
 
                 // show current image
 
-                var image_url = base_path + 'images/' + data.department.image;
+                var image_url = base_path + 'images/' + data.category.image;
                 $('#imgPreview').attr('src', image_url);
-                $('#image_title').html(data.department.image);
+                $('#image_title').html(data.category.image);
                 $('.image-preview').show();
+
+
                 $('#crud_modal').modal('show');
             }
         })

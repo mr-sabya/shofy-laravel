@@ -42,6 +42,7 @@ Route::prefix('admin')->group(function () {
 
         //common 
         Route::get('get-department-select-option', [App\Http\Controllers\Backend\CommonController::class, 'getDepartment'])->name('admin.get.department');
+        Route::get('get-department-select-option/{id}', [App\Http\Controllers\Backend\CommonController::class, 'getDepartmentById'])->name('admin.get.department.byid');
         
         
         // departments
