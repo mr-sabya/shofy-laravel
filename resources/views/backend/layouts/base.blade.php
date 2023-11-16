@@ -8,7 +8,8 @@
     <meta name="author" content="">
     <meta name="robots" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
 
     <!-- PAGE TITLE HERE -->
     <title>@yield('title') - Shofy Admin Panel</title>
@@ -23,11 +24,16 @@
     <link href="{{ asset('assets/backend/vendor/datatables/css/buttons.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/backend/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
 
+
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{ asset('assets/backend/vendor/toastr/css/toastr.min.css') }}">
+
     <!-- tagify-css -->
     <link href="{{ asset('assets/backend/vendor/tagify/dist/tagify.css') }}" rel="stylesheet">
 
     <!-- Style css -->
     <link href="{{ asset('assets/backend/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/backend/css/custom.css') }}" rel="stylesheet">
 
 </head>
 
@@ -71,7 +77,7 @@
         </div>
 
         <!--**************** Content body end ******************-->
-        
+
     </div>
     <!--************ Main wrapper end *****************-->
 
@@ -83,7 +89,11 @@
     <!-- Required vendors -->
     <script src="{{ asset('assets/backend/vendor/global/global.min.js') }}"></script>
     <script src="{{ asset('assets/backend/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
-    
+
+
+    <!-- Toastr -->
+    <script src="{{ asset('assets/backend/vendor/toastr/js/toastr.min.js') }}"></script>
+
 
     <!-- tagify -->
     <script src="{{ asset('assets/backend/vendor/tagify/dist/tagify.js') }}"></script>
@@ -95,9 +105,22 @@
     <script src="{{ asset('assets/backend/vendor/datatables/js/jszip.min.js') }}"></script>
     <script src="{{ asset('assets/backend/js/plugins-init/datatables.init.js') }}"></script>
 
-    
+
+
     <script src="{{ asset('assets/backend/js/custom.js') }}"></script>
     <script src="{{ asset('assets/backend/js/deznav-init.js') }}"></script>
+
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        const base_path = '{{ url('/') }}\/';
+    </script>
+
+    @yield('scripts')
 </body>
 
 

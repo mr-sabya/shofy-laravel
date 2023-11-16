@@ -35,9 +35,22 @@ Route::post('register', [App\Http\Controllers\Frontend\Auth\RegisterController::
 Route::prefix('admin')->group(function () {
 
     Route::get('login', [App\Http\Controllers\Backend\Auth\LoginController::class, 'loginForm'])->name('admin.login');
+    Route::post('login', [App\Http\Controllers\Backend\Auth\LoginController::class, 'login'])->name('admin.login.submit');
 
     Route::group(['middleware'=>'admin'],function(){
         Route::get('/', [App\Http\Controllers\Backend\HomeController::class, 'index'])->name('dashboard');
+
+        //common 
+        Route::get('get-department-select-option', [App\Http\Controllers\Backend\CommonController::class, 'getDepartment'])->name('admin.get.department');
+        
+        
+        // departments
+        Route::resource('department', App\Http\Controllers\Backend\DepartmentController::class, ['names' => 'admin.department']);
+        Route::post('department/update', [App\Http\Controllers\Backend\DepartmentController::class, 'update'])->name('admin.department.update');
+
+        // categories
+        Route::resource('category', App\Http\Controllers\Backend\CategoryController::class, ['names' => 'admin.category']);
+        Route::post('category/update', [App\Http\Controllers\Backend\CategoryController::class, 'update'])->name('admin.category.update');
 
     });
 });

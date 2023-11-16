@@ -4,17 +4,27 @@
 
 @section('form')
 
-<form action="https://yashadmin.dexignzone.com/xhtml/index.html" class=" dz-form ">
+<form action="{{ route('admin.login.submit') }}" method="post" class=" dz-form ">
+    @csrf
     <h3 class="form-title m-t0">Personal Information</h3>
+    @if(Session::has('error-message'))
+    <p class="alert alert-info">{{ Session::get('error-message') }}</p>
+    @endif
     <div class="dz-separator-outer m-b5">
         <div class="dz-separator bg-primary style-liner"></div>
     </div>
     <p>Enter your e-mail address and your password. </p>
     <div class="form-group mb-3">
-        <input type="email" class="form-control" value="hello@example.com">
+        <input type="email" name="email" class="form-control" placeholder="hello@example.com">
+        @if($errors->has('email'))
+        <span style="color: red;">{{ $errors->first('email') }}</span>
+        @endif
     </div>
     <div class="form-group mb-3">
-        <input type="password" class="form-control" value="Password">
+        <input type="password" name="password" class="form-control" placeholder="Password">
+        @if($errors->has('password'))
+        <span style="color: red;">{{ $errors->first('password') }}</span>
+        @endif
     </div>
     <div class="form-check d-inline-block">
         <input type="checkbox" class="form-check-input" id="check1" name="example1">

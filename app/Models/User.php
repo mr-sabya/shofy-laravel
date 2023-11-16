@@ -23,7 +23,6 @@ class User extends Authenticatable
         'password',
         'image',
         'is_active',
-        'is_admin',
     ];
 
     /**

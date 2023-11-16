@@ -161,6 +161,7 @@ return [
          */
 
         Brian2694\Toastr\ToastrServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -186,6 +187,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
         'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
+        'Datatables' => Yajra\DataTables\Facades\DataTables::class
     ])->toArray(),
 
 ];
