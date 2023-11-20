@@ -203,7 +203,7 @@
             success: function(data) {
                 var html = '';
 
-                if (data.name_error) {
+                if (data.title_error) {
                     $('#title_error').html(data.title_error)
                 }
 
@@ -231,8 +231,8 @@
 
                     $('#crud_form')[0].reset();
                     $('#dataTable').DataTable().ajax.reload();
+                    $('#crud_modal').modal('hide');
                 }
-                $('#crud_modal').modal('hide');
             }
         });
     });

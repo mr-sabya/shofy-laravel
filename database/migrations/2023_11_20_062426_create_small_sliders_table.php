@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sub_categories', function (Blueprint $table) {
+        Schema::create('small_sliders', function (Blueprint $table) {
             $table->id();
-            $table->integer('category_id');
-            $table->string('title');
-            $table->string('slug')->unique();
-            $table->string('image');
             $table->timestamps();
         });
     }
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sub_categories');
+        Schema::dropIfExists('small_sliders');
     }
 };

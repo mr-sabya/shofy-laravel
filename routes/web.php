@@ -41,8 +41,14 @@ Route::prefix('admin')->group(function () {
         Route::get('/', [App\Http\Controllers\Backend\HomeController::class, 'index'])->name('dashboard');
 
         //common 
+
+        // get department
         Route::get('get-department-select-option', [App\Http\Controllers\Backend\CommonController::class, 'getDepartment'])->name('admin.get.department');
         Route::get('get-department-select-option/{id}', [App\Http\Controllers\Backend\CommonController::class, 'getDepartmentById'])->name('admin.get.department.byid');
+
+        // get category
+        Route::get('get-category-select-option', [App\Http\Controllers\Backend\CommonController::class, 'getCategory'])->name('admin.get.category');
+        Route::get('get-category-select-option/{id}', [App\Http\Controllers\Backend\CommonController::class, 'getCategoryById'])->name('admin.get.category.byid');
         
         
         // departments
@@ -52,6 +58,19 @@ Route::prefix('admin')->group(function () {
         // categories
         Route::resource('category', App\Http\Controllers\Backend\CategoryController::class, ['names' => 'admin.category']);
         Route::post('category/update', [App\Http\Controllers\Backend\CategoryController::class, 'update'])->name('admin.category.update');
+
+        // sub categories
+        Route::resource('sub-category', App\Http\Controllers\Backend\SubCategoryController::class, ['names' => 'admin.sub-category']);
+        Route::post('sub-category/update', [App\Http\Controllers\Backend\SubCategoryController::class, 'update'])->name('admin.sub-category.update');
+
+        // slider
+        Route::resource('slider', App\Http\Controllers\Backend\SliderController::class, ['names' => 'admin.slider'])->except(['create', 'show']);
+        Route::post('slider/update', [App\Http\Controllers\Backend\SliderController::class, 'update'])->name('admin.slider.update');
+
+
+        // small slider
+        Route::resource('small-slider', App\Http\Controllers\Backend\SmallSliderController::class, ['names' => 'admin.small-slider'])->except(['create', 'show']);
+        Route::post('small-slider/update', [App\Http\Controllers\Backend\SmallSliderController::class, 'update'])->name('admin.small-slider.update');
 
     });
 });

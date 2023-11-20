@@ -1,6 +1,6 @@
 @extends('backend.layouts.base')
 
-@section('title', 'Categories')
+@section('title', 'Slider')
 
 @section('content')
 
@@ -24,9 +24,11 @@
                             <tr>
                                 <th>#</th>
                                 <th>Image</th>
-                                <th>Name</th>
-                                <th>Slug</th>
-                                <th>Department</th>
+                                <th>Slider Title</th>
+                                <th>Offer Text</th>
+                                <th>Offter Type</th>
+                                <th>Offer Percentage</th>
+                                <th>Offer Period</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -52,22 +54,39 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <label for="title">Department</label>
-                        <select class="form-control" id="department_id" name="department_id"></select>
-                        <span class="error" id="department_error"></span>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" class="form-control" name="title" id="title">
-                        <span class="error" id="title_error"></span>
+                        <label for="offer_text">Offte Text</label>
+                        <input type="text" class="form-control" name="offer_text" id="offer_text" placeholder="Starting at $274.00">
+                        <span class="error" id="offer_text_error"></span>
                     </div>
 
                     <div class="form-group">
-                        <label for="slug">Slug</label>
-                        <input type="text" class="form-control" name="slug" id="slug">
-                        <span class="error" id="slug_error"></span>
+                        <label for="slider_heading">Slider Title</label>
+                        <input type="text" class="form-control" name="slider_heading" id="slider_heading" placeholder="The best tablet Collection 2023">
+                        <span class="error" id="slider_heading_error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="offer_type">Offer Type</label>
+                        <input type="text" class="form-control" name="offer_type" id="offer_type" placeholder="Exclusive offer">
+                        <span class="error" id="offer_type_error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="offer_percentage">Offer Percentage</label>
+                        <input type="number" class="form-control" name="offer_percentage" id="offer_percentage" placeholder="5">
+                        <span class="error" id="offer_percentage_error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="offer_time">Offer Period</label>
+                        <input type="text" class="form-control" name="offer_time" id="offer_time" placeholder="this week/month..">
+                        <span class="error" id="offer_time_error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product_link">Product Link</label>
+                        <input type="text" class="form-control" name="product_link" id="product_link" placeholder="">
+                        <span class="error" id="product_link_error"></span>
                     </div>
 
                     <div class="form-group">
@@ -132,7 +151,7 @@
             }
         },
         ajax: {
-            url: "{{ route('admin.category.index') }}",
+            url: "{{ route('admin.slider.index') }}",
         },
         columns: [{
                 "data": 'DT_RowIndex',
@@ -144,16 +163,24 @@
                 name: 'data_image'
             },
             {
-                data: 'title',
-                name: 'title'
+                data: 'slider_heading',
+                name: 'slider_heading'
             },
             {
-                data: 'slug',
-                name: 'slug'
+                data: 'offer_text',
+                name: 'offer_text'
             },
             {
-                data: 'department',
-                name: 'department'
+                data: 'offer_type',
+                name: 'offer_type'
+            },
+            {
+                data: 'offer_percentage',
+                name: 'offer_percentage'
+            },
+            {
+                data: 'offer_time',
+                name: 'offer_time'
             },
             {
                 data: 'action',
@@ -164,14 +191,17 @@
     });
 
     function resetError() {
-        $('#title_error').html('')
-        $('#slug_error').html('')
-        $('#icon_error').html('')
-        $('#image_error').html('')
+        $('#offer_text_error').html('');
+        $('#slider_heading_error').html('');
+        $('#offer_type_error').html('');
+        $('#offer_percentage_error').html('');
+        $('#offer_time_error').html('');
+        $('#product_link_error').html('');
+        $('#image_error').html('');
     };
 
     $('#add_new_btn').click(function() {
-        $('#modal_title').text('Add New Department');
+        $('#modal_title').text('Add New Slider');
         $('#action_button').html('Add');
         $('#action').val('Add');
         $('#form_result').html('');
@@ -179,18 +209,6 @@
         // reset form
         resetError();
         $('#crud_form')[0].reset();
-        $('#department_id').html('');
-
-
-        // get department
-        $.ajax({
-            url: "{{ route('admin.get.department') }}",
-            dataType: "json",
-            success: function(data) {
-                $('#department_id').append(data.data);
-            }
-
-        });
 
         // show modal
         $('#crud_modal').modal('show');
@@ -204,11 +222,11 @@
         var action_url = '';
 
         if ($('#action').val() == 'Add') {
-            action_url = "{{ route('admin.category.store') }}";
+            action_url = "{{ route('admin.slider.store') }}";
         }
 
         if ($('#action').val() == 'Edit') {
-            action_url = "{{ route('admin.category.update') }}";
+            action_url = "{{ route('admin.slider.update') }}";
         }
 
         $.ajax({
@@ -222,16 +240,28 @@
             success: function(data) {
                 var html = '';
 
-                if (data.title_error) {
-                    $('#title_error').html(data.title_error)
+                if (data.offer_text_error) {
+                    $('#offer_text_error').html(data.offer_text_error)
                 }
 
-                if (data.slug_error) {
-                    $('#slug_error').html(data.slug_error)
+                if (data.offer_text_error) {
+                    $('#slider_heading_error').html(data.slider_heading_error)
                 }
 
-                if (data.department_error) {
-                    $('#department_error').html(data.department_error)
+                if (data.offer_type_error) {
+                    $('#offer_type_error').html(data.offer_type_error)
+                }
+
+                if (data.offer_percentage_error) {
+                    $('#offer_percentage_error').html(data.offer_percentage_error)
+                }
+
+                if (data.offer_time_error) {
+                    $('#offer_time_error').html(data.offer_time_error)
+                }
+
+                if (data.product_link_error) {
+                    $('#product_link_error').html(data.product_link_error)
                 }
 
                 if (data.image_error) {
@@ -263,32 +293,27 @@
         resetError();
 
         $.ajax({
-            url: "/admin/category/" + id + "/edit",
+            url: "/admin/slider/" + id + "/edit",
             dataType: "json",
             success: function(data) {
-                $('#title').val(data.category.title);
-                $('#slug').val(data.category.slug);
-
-                // get department
-                $.ajax({
-                    url: "/admin/get-department-select-option/" + data.category.department_id,
-                    dataType: "json",
-                    success: function(data) {
-                        $('#department_id').append(data.data);
-                    }
-
-                });
+                $('#offer_text').val(data.slider.offer_text);
+                $('#slider_heading').val(data.slider.slider_heading);
+                $('#offer_type').val(data.slider.offer_type);
+                $('#offer_percentage').val(data.slider.offer_percentage);
+                $('#offer_time').val(data.slider.offer_time);
+                $('#product_link').val(data.slider.product_link);
+                
 
                 $('#hidden_id').val(id);
-                $('.modal-title').text('Edit Department');
+                $('.modal-title').text('Edit Slider');
                 $('#action_button').html('Update');
                 $('#action').val('Edit');
 
                 // show current image
 
-                var image_url = base_path + 'images/' + data.category.image;
+                var image_url = base_path + 'images/' + data.slider.image;
                 $('#imgPreview').attr('src', image_url);
-                $('#image_title').html(data.category.image);
+                $('#image_title').html(data.slider.image);
                 $('.image-preview').show();
 
 

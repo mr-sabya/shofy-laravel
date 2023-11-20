@@ -1,6 +1,6 @@
 @extends('backend.layouts.base')
 
-@section('title', 'Categories')
+@section('title', 'Sub Categories')
 
 @section('content')
 
@@ -26,7 +26,7 @@
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>Slug</th>
-                                <th>Department</th>
+                                <th>Category</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -52,9 +52,9 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <label for="title">Department</label>
-                        <select class="form-control" id="department_id" name="department_id"></select>
-                        <span class="error" id="department_error"></span>
+                        <label for="title">Category</label>
+                        <select class="form-control" id="category_id" name="category_id"></select>
+                        <span class="error" id="category_error"></span>
                     </div>
 
 
@@ -132,7 +132,7 @@
             }
         },
         ajax: {
-            url: "{{ route('admin.category.index') }}",
+            url: "{{ route('admin.sub-category.index') }}",
         },
         columns: [{
                 "data": 'DT_RowIndex',
@@ -152,8 +152,8 @@
                 name: 'slug'
             },
             {
-                data: 'department',
-                name: 'department'
+                data: 'category',
+                name: 'category'
             },
             {
                 data: 'action',
@@ -179,15 +179,15 @@
         // reset form
         resetError();
         $('#crud_form')[0].reset();
-        $('#department_id').html('');
+        $('#category_id').html('');
 
 
         // get department
         $.ajax({
-            url: "{{ route('admin.get.department') }}",
+            url: "{{ route('admin.get.category') }}",
             dataType: "json",
             success: function(data) {
-                $('#department_id').append(data.data);
+                $('#category_id').append(data.data);
             }
 
         });
@@ -204,11 +204,11 @@
         var action_url = '';
 
         if ($('#action').val() == 'Add') {
-            action_url = "{{ route('admin.category.store') }}";
+            action_url = "{{ route('admin.sub-category.store') }}";
         }
 
         if ($('#action').val() == 'Edit') {
-            action_url = "{{ route('admin.category.update') }}";
+            action_url = "{{ route('admin.sub-category.update') }}";
         }
 
         $.ajax({
@@ -230,7 +230,7 @@
                     $('#slug_error').html(data.slug_error)
                 }
 
-                if (data.department_error) {
+                if (data.icon_error) {
                     $('#department_error').html(data.department_error)
                 }
 
@@ -263,18 +263,18 @@
         resetError();
 
         $.ajax({
-            url: "/admin/category/" + id + "/edit",
+            url: "/admin/sub-category/" + id + "/edit",
             dataType: "json",
             success: function(data) {
-                $('#title').val(data.category.title);
-                $('#slug').val(data.category.slug);
+                $('#title').val(data.subcategory.title);
+                $('#slug').val(data.subcategory.slug);
 
                 // get department
                 $.ajax({
-                    url: "/admin/get-department-select-option/" + data.category.department_id,
+                    url: "/admin/get-category-select-option/" + id,
                     dataType: "json",
                     success: function(data) {
-                        $('#department_id').append(data.data);
+                        $('#category_id').append(data.data);
                     }
 
                 });
@@ -286,9 +286,9 @@
 
                 // show current image
 
-                var image_url = base_path + 'images/' + data.category.image;
+                var image_url = base_path + 'images/' + data.subcategory.image;
                 $('#imgPreview').attr('src', image_url);
-                $('#image_title').html(data.category.image);
+                $('#image_title').html(data.subcategory.image);
                 $('.image-preview').show();
 
 
