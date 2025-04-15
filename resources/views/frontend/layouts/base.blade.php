@@ -32,37 +32,42 @@
 
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/custom.css') }}">
+
+    @livewireStyles
+
 </head>
 
-<body>
+<body x-data="{ loading: true }" x-init="setTimeout(() => loading = false, 1000)">
 
     <!-- pre loader area start -->
-    @include('frontend.partials.preloader')
+    <livewire:frontend.theme.preloader.item1 />
     <!-- pre loader area end -->
 
     <!-- back to top start -->
-    @include('frontend.partials.back-to-top')
+    <livewire:frontend.theme.back-to-top.item1 />
     <!-- back to top end -->
 
     <!-- offcanvas area start -->
-    @include('frontend.partials.home-menu.offcanvas')
+    <livewire:frontend.theme.off-canvas.menu1 />
+    <div class="body-overlay"></div>
     <!-- offcanvas area end -->
 
     <!-- mobile menu area start -->
-    @include('frontend.partials.mobile-menu')
+    <livewire:frontend.theme.mobile-menu.menu1 />
     <!-- mobile menu area end -->
 
 
 
     <!-- cart mini area start -->
-    @include('frontend.partials.cart')
+    <livewire:frontend.theme.cart.side-cart />
     <!-- cart mini area end -->
 
     <!-- header area start -->
     @if(Route::is('home'))
-    @include('frontend.partials.home-menu.home-header')
+    <livewire:frontend.theme.menu1.home-menu />
+    <livewire:frontend.theme.menu1.sticky-menu />
     @else
-    @include('frontend.partials.other-menu.other-header')
+    <livewire:frontend.theme.menu1.other-menu />
     @endif
     <!-- header area end -->
 
@@ -93,34 +98,40 @@
 
 
     <!-- footer area start -->
-    @include('frontend.partials.footer')
+    <livewire:frontend.theme.footer.footer1 />
     <!-- footer area end -->
 
+    <!-- quick view modal start -->
+    <livewire:frontend.components.product.quick-view />
+    <!-- quick view modal end -->
 
 
     <!-- JS here -->
-    <script src="{{ asset('assets/frontend/js/vendor/jquery.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/vendor/waypoints.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/bootstrap-bundle.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/meanmenu.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/swiper-bundle.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/slick.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/range-slider.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/magnific-popup.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/nice-select.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/purecounter.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/countdown.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/wow.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/isotope-pkgd.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/imagesloaded-pkgd.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/ajax-form.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/infinite-scroll.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/frontend/js/vendor/jquery.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/frontend/js/vendor/waypoints.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/frontend/js/bootstrap-bundle.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/frontend/js/meanmenu.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/frontend/js/swiper-bundle.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/frontend/js/slick.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/frontend/js/range-slider.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/frontend/js/magnific-popup.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/frontend/js/nice-select.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/frontend/js/purecounter.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/frontend/js/countdown.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/frontend/js/wow.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/frontend/js/isotope-pkgd.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/frontend/js/imagesloaded-pkgd.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/frontend/js/ajax-form.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/frontend/js/infinite-scroll.js') }}"></script>
 
     <!-- toastr -->
-    <script src="{{ url('assets/frontend/vendor/toastr/toastr.min.js') }}"></script>
+    <script data-navigate-once src="{{ url('assets/frontend/vendor/toastr/toastr.min.js') }}"></script>
 
-    <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/frontend/js/main.js') }}"></script>
     {!! Toastr::message() !!}
+
+    @livewireScripts
+    @stack('scripts')
 </body>
 
 </html>

@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,11 +22,12 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        \App\Models\Admin::create([
+        User::create([
             'name' => 'Web Journey',
             'email' => 'sabya.citik@gmail.com',
-            'username' => 'sabyaroy',
             'password' => Hash::make('Sabya@12345'),
+            'is_admin' => 1,
+            'is_active' => 1,
         ]);
     }
 }

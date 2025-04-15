@@ -8,7 +8,7 @@
 
 @section('content')
 <!-- banner area start -->
-@include('frontend.partials.banners.banner-two')
+<livewire:frontend.components.ad.banner1 square="true" />
 <!-- banner area end -->
 
 <!-- category area start -->
@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <div class="row">
             <div class="col-xl-12">
@@ -50,6 +50,6 @@
 
 
 <!-- subscribe area start -->
-@include('frontend.partials.subscribe')
+<llivewire:frontend.components.subscribe />
 <!-- subscribe area end -->
 @endsection
