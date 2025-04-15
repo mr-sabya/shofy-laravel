@@ -1,9 +1,12 @@
-$('.category-slider').slick({
-    infinite: true,
-    slidesToShow: 12,
-    slidesToScroll: 1,
-    arrow: false,
-    responsive: [{
+
+// Re-init on Livewire page navigation
+document.addEventListener('livewire:navigated', () => {
+    $('.category-slider').slick({
+        infinite: true,
+        slidesToShow: 12,
+        slidesToScroll: 1,
+        arrow: false,
+        responsive: [{
             breakpoint: 1735,
             settings: {
                 slidesToShow: 11,
@@ -81,5 +84,7 @@ $('.category-slider').slick({
                 slidesToShow: 2,
             }
         },
-    ]
+        ]
+    });
 });
+

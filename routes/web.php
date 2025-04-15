@@ -42,18 +42,12 @@ Route::prefix('admin')->group(function () {
 
         //common 
 
-        // get department
-        Route::get('get-department-select-option', [App\Http\Controllers\Backend\CommonController::class, 'getDepartment'])->name('admin.get.department');
-        Route::get('get-department-select-option/{id}', [App\Http\Controllers\Backend\CommonController::class, 'getDepartmentById'])->name('admin.get.department.byid');
 
         // get category
         Route::get('get-category-select-option', [App\Http\Controllers\Backend\CommonController::class, 'getCategory'])->name('admin.get.category');
         Route::get('get-category-select-option/{id}', [App\Http\Controllers\Backend\CommonController::class, 'getCategoryById'])->name('admin.get.category.byid');
         
         
-        // departments
-        Route::resource('department', App\Http\Controllers\Backend\DepartmentController::class, ['names' => 'admin.department']);
-        Route::post('department/update', [App\Http\Controllers\Backend\DepartmentController::class, 'update'])->name('admin.department.update');
 
         // categories
         Route::resource('category', App\Http\Controllers\Backend\CategoryController::class, ['names' => 'admin.category']);

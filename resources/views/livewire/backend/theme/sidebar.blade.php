@@ -29,7 +29,7 @@
                     <li class="back-btn"></li>
 
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="index.html">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('dashboard') }}" wire:navigate>
                             <i class="ri-home-line"></i>
                             <span>Dashboard</span>
                         </a>
@@ -58,7 +58,7 @@
                         </a>
                         <ul class="sidebar-submenu">
                             <li>
-                                <a href="category.html">Category List</a>
+                                <a href="{{ route('admin.category.index') }}" wire:navigate>Category List</a>
                             </li>
 
                             <li>

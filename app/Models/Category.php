@@ -10,9 +10,10 @@ class Category extends Model
     use HasFactory;
 
 
-    // department
-    public function department()
-    {
-        return $this->belongsTo('App\Models\Department', 'department_id');
-    }
+    protected $fillable = [
+        'title',
+        'slug',
+        'image',
+        'icon',
+    ];
 }
