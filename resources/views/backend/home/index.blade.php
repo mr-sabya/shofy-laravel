@@ -81,7 +81,8 @@
                 </div>
             </div>
         </div>
-
+    </div>
+    <div class="row">
         <div class="col-12">
             <div class="card o-hidden card-hover">
                 <div class="card-header border-0 pb-1">
@@ -249,7 +250,8 @@
             </div>
         </div>
         <!-- chart card section End -->
-
+    </div>
+    <div class="row">
 
         <!-- Earning chart star-->
         <div class="col-xl-6">

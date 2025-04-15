@@ -1,3 +1,5 @@
+document.addEventListener('livewire:navigated', () => {
+
 $(".toggle-nav").click(function () {
     $('#sidebar-links .nav-menu').css("left", "0px");
 });
@@ -370,3 +372,5 @@ if ($('#sidebar-menu .simplebar-content-wrapper').hasClass('a.sidebar-link.sideb
         scrollTop: $('a.sidebar-link.sidebar-title.active').offset().top - 200
     }, 1000);
 }
+
+});

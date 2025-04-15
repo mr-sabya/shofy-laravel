@@ -21,7 +21,7 @@
         rel="stylesheet">
 
     <!-- Linear Icon css -->
-    <link rel="stylesheet" href="assets/css/linearicon.css">
+    <link rel="stylesheet" href="{{ asset('assets/backend/css/linearicon.css') }}">
 
     <!-- fontawesome css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/css/vendors/font-awesome.css') }}">
@@ -53,9 +53,24 @@
 
     <!-- App css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/css/custom.css') }}">
+    @livewireStyles
 </head>
 
-<body>
+<body x-data="{ loading: true }" x-init="setTimeout(() => loading = false, 1000)">
+
+    <div id="loading" x-show="loading" x-transition.opacity>
+    <!-- <div id="loading"> -->
+        <div class="content-area">
+            <!-- loading content here -->
+            <div class="tp-preloader-content">
+                <div class="tp-preloader-logo">
+                    <img src="{{ url('assets/backend/images/logo/1.png') }}" alt="">
+                </div>
+                <p class="tp-preloader-subtitle mt-4">Loading.....</p>
+            </div>
+        </div>
+    </div>
     <!-- tap on top start -->
     <div class="tap-top">
         <span class="lnr lnr-chevron-up"></span>
@@ -99,72 +114,58 @@
     <!-- page-wrapper End-->
 
     <!-- Modal Start -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog  modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <h5 class="modal-title" id="staticBackdropLabel">Logging Out</h5>
-                    <p>Are you sure you want to log out?</p>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <div class="button-box">
-                        <button type="button" class="btn btn--no" data-bs-dismiss="modal">No</button>
-                        <button type="button" class="btn  btn--yes btn-primary">Yes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <livewire:backend.theme.logout />
     <!-- Modal End -->
 
     <!-- latest js -->
-    <script src="{{ asset('assets/backend/js/jquery-3.6.0.min.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/jquery-3.6.0.min.js') }}"></script>
 
     <!-- Bootstrap js -->
-    <script src="{{ asset('assets/backend/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
 
     <!-- feather icon js -->
-    <script src="{{ asset('assets/backend/js/icons/feather-icon/feather.min.js') }}"></script>
-    <script src="{{ asset('assets/backend/js/icons/feather-icon/feather-icon.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/icons/feather-icon/feather.min.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/icons/feather-icon/feather-icon.js') }}"></script>
 
     <!-- scrollbar simplebar js -->
-    <script src="{{ asset('assets/backend/js/scrollbar/simplebar.js') }}"></script>
-    <script src="{{ asset('assets/backend/js/scrollbar/custom.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/scrollbar/simplebar.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/scrollbar/custom.js') }}"></script>
 
     <!-- Sidebar jquery -->
-    <script src="{{ asset('assets/backend/js/config.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/config.js') }}"></script>
 
     <!-- tooltip init js -->
-    <script src="{{ asset('assets/backend/js/tooltip-init.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/tooltip-init.js') }}"></script>
 
     <!-- Plugins JS -->
-    <script src="{{ asset('assets/backend/js/sidebar-menu.js') }}"></script>
-    <script src="{{ asset('assets/backend/js/notify/bootstrap-notify.min.js') }}"></script>
-    <script src="{{ asset('assets/backend/js/notify/index.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/sidebar-menu.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/notify/bootstrap-notify.min.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/notify/index.js') }}"></script>
 
     <!-- Apexchar js -->
-    <script src="{{ asset('assets/backend/js/chart/apex-chart/apex-chart1.js') }}"></script>
-    <script src="{{ asset('assets/backend/js/chart/apex-chart/moment.min.js') }}"></script>
-    <script src="{{ asset('assets/backend/js/chart/apex-chart/apex-chart.js') }}"></script>
-    <script src="{{ asset('assets/backend/js/chart/apex-chart/stock-prices.js') }}"></script>
-    <script src="{{ asset('assets/backend/js/chart/apex-chart/chart-custom1.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/chart/apex-chart/apex-chart1.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/chart/apex-chart/moment.min.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/chart/apex-chart/apex-chart.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/chart/apex-chart/stock-prices.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/chart/apex-chart/chart-custom1.js') }}"></script>
 
 
     <!-- slick slider js -->
-    <script src="{{ asset('assets/backend/js/slick.min.js') }}"></script>
-    <script src="{{ asset('assets/backend/js/custom-slick.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/slick.min.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/custom-slick.js') }}"></script>
 
     <!-- customizer js -->
-    <script src="{{ asset('assets/backend/js/customizer.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/customizer.js') }}"></script>
 
     <!-- ratio js -->
-    <script src="{{ asset('assets/backend/js/ratio.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/ratio.js') }}"></script>
 
     <!-- sidebar effect -->
-    <script src="{{ asset('assets/backend/js/sidebareffect.js') }}"></script>
+    <!-- <script data-navigate-once src="{{ asset('assets/backend/js/sidebareffect.js') }}"></script> -->
 
     <!-- Theme js -->
-    <script src="{{ asset('assets/backend/js/script.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/script.js') }}"></script>
+    @livewireScripts
 </body>
 
 

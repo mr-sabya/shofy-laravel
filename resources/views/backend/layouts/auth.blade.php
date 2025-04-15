@@ -16,41 +16,42 @@
 
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
-    <link href="{{ asset('assets/backend/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/backend/css/style.css') }}" rel="stylesheet">
+
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/css/vendors/bootstrap.css') }}">
+
+    <!-- App css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/css/custom.css') }}">
 
 </head>
 
 <body class="vh-100">
-    <div class="page-wraper">
+    <div class="page-wraper ">
 
         <!-- Content -->
-        <div class="browse-job login-style3">
+        <div class="page-body" style="background-color: rgb(249, 249, 246);">
             <!-- Coming Soon -->
-            <div class="bg-img-fix overflow-hidden" style="background:#fff url(../assets/backend/images/background/bg6.jpg); height: 100vh;">
-                <div class="row gx-0 justify-content-center">
-                    <div class="col-lg-4 col-md-6 col-sm-12 vh-100 d-flex align-items-center">
-                        <div class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside w-100" tabindex="0">
-                            <div id="mCSB_1_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
-                                <div class="login-form style-2">
+            <div class="bg-img-fix overflow-hidden">
+                <div class="row justify-content-center">
+                    <div class="col-lg-3 col-md-6 col-sm-12 vh-100 d-flex align-items-center">
+
+                        <div class="card o-hidden card-hover w-100">
 
 
-                                    <div class="card-body">
-                                        <div class="logo-header">
-                                            <a href="index.html" class="logo"><img src="{{ url('assets/backend/images/logo/logo-full.png') }}" alt="" class="width-230 light-logo"></a>
-                                            <a href="index.html" class="logo"><img src="{{ url('assets/backend/images/logo/logofull-white.png') }}" alt="" class="width-230 dark-logo"></a>
-                                        </div>
-
-                                        @yield('form')
-
-
-                                    </div>
-
-
+                            <div class="card-body p-3">
+                                <div class="logo-header d-flex align-items-center justify-content-center mb-5">
+                                    <a href="index.html" class="logo"><img src="{{ url('assets/backend/images/logo/1.png') }}" alt="" style="width: 150px;"></a>
                                 </div>
+
+                                @yield('form')
+
+
                             </div>
 
+
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -59,14 +60,13 @@
         <!-- Content END-->
     </div>
 
-    <!--**********************************
-Scripts
-***********************************-->
+
     <!-- Required vendors -->
-    <script src="{{ asset('assets/backend/vendor/global/global.min.js') }}"></script>
-    <script src="{{ asset('assets/backend/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
-    <script src="{{ asset('assets/backend/js/deznav-init.js') }}"></script>
-    <script src="{{ asset('assets/backend/js/custom.js') }}"></script>
+    <!-- latest js -->
+    <script src="{{ asset('assets/backend/js/jquery-3.6.0.min.js') }}"></script>
+
+    <!-- Bootstrap js -->
+    <script src="{{ asset('assets/backend/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
 </body>
 
 
