@@ -62,7 +62,7 @@
                             </li>
 
                             <li>
-                                <a href="add-new-category.html">Add New Category</a>
+                                <a href="{{ route('admin.category.create') }}" wire:navigate>Add New Category</a>
                             </li>
                         </ul>
                     </li>

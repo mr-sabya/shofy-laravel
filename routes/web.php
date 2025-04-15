@@ -50,8 +50,9 @@ Route::prefix('admin')->group(function () {
         
 
         // categories
-        Route::resource('category', App\Http\Controllers\Backend\CategoryController::class, ['names' => 'admin.category']);
-        Route::post('category/update', [App\Http\Controllers\Backend\CategoryController::class, 'update'])->name('admin.category.update');
+        Route::get('categories', [App\Http\Controllers\Backend\CategoryController::class, 'index'])->name('admin.category.index');
+        Route::get('categories/create', [App\Http\Controllers\Backend\CategoryController::class, 'create'])->name('admin.category.create');
+        Route::get('categories/edit/{id}', [App\Http\Controllers\Backend\CategoryController::class, 'edit'])->name('admin.category.edit');
 
         // sub categories
         Route::resource('sub-category', App\Http\Controllers\Backend\SubCategoryController::class, ['names' => 'admin.sub-category']);

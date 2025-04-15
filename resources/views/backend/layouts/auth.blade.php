@@ -23,7 +23,7 @@
     <!-- App css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/css/custom.css') }}">
-
+    @livewireStyles
 </head>
 
 <body class="vh-100">
@@ -63,10 +63,11 @@
 
     <!-- Required vendors -->
     <!-- latest js -->
-    <script src="{{ asset('assets/backend/js/jquery-3.6.0.min.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/jquery-3.6.0.min.js') }}"></script>
 
     <!-- Bootstrap js -->
-    <script src="{{ asset('assets/backend/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/backend/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+    @livewireScripts
 </body>
 
 

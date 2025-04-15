@@ -60,7 +60,7 @@
 <body x-data="{ loading: true }" x-init="setTimeout(() => loading = false, 1000)">
 
     <div id="loading" x-show="loading" x-transition.opacity>
-    <!-- <div id="loading"> -->
+        <!-- <div id="loading"> -->
         <div class="content-area">
             <!-- loading content here -->
             <div class="tp-preloader-content">
@@ -142,17 +142,7 @@
     <script data-navigate-once src="{{ asset('assets/backend/js/notify/bootstrap-notify.min.js') }}"></script>
     <script data-navigate-once src="{{ asset('assets/backend/js/notify/index.js') }}"></script>
 
-    <!-- Apexchar js -->
-    <script data-navigate-once src="{{ asset('assets/backend/js/chart/apex-chart/apex-chart1.js') }}"></script>
-    <script data-navigate-once src="{{ asset('assets/backend/js/chart/apex-chart/moment.min.js') }}"></script>
-    <script data-navigate-once src="{{ asset('assets/backend/js/chart/apex-chart/apex-chart.js') }}"></script>
-    <script data-navigate-once src="{{ asset('assets/backend/js/chart/apex-chart/stock-prices.js') }}"></script>
-    <script data-navigate-once src="{{ asset('assets/backend/js/chart/apex-chart/chart-custom1.js') }}"></script>
 
-
-    <!-- slick slider js -->
-    <script data-navigate-once src="{{ asset('assets/backend/js/slick.min.js') }}"></script>
-    <script data-navigate-once src="{{ asset('assets/backend/js/custom-slick.js') }}"></script>
 
     <!-- customizer js -->
     <script data-navigate-once src="{{ asset('assets/backend/js/customizer.js') }}"></script>
@@ -163,8 +153,35 @@
     <!-- sidebar effect -->
     <!-- <script data-navigate-once src="{{ asset('assets/backend/js/sidebareffect.js') }}"></script> -->
 
+    @stack('scripts')
+
     <!-- Theme js -->
     <script data-navigate-once src="{{ asset('assets/backend/js/script.js') }}"></script>
+
+    <script>
+        document.addEventListener('livewire:init', function() {
+            Livewire.on('alert', data => {
+                console.log(data);
+                $.notify({
+                    icon: 'fas fa-bell',
+                    title: data[0].title ?? '',
+                    message: `<strong>${data[0].message}</strong>`
+                }, {
+                    type: data[0].type ?? 'info', // success, danger, info, etc.
+                    allow_dismiss: true,
+                    delay: 4000,
+                    showProgressbar: true,
+                    timer: 300,
+                    animate: {
+                        enter: 'animated fadeInDown',
+                        exit: 'animated fadeOutUp'
+                    },
+                    
+                });
+            });
+        });
+    </script>
+
     @livewireScripts
 </body>
 

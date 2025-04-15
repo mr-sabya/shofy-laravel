@@ -832,3 +832,17 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<!-- Apexchar js -->
+<script data-navigate-once src="{{ asset('assets/backend/js/chart/apex-chart/apex-chart1.js') }}"></script>
+<script data-navigate-once src="{{ asset('assets/backend/js/chart/apex-chart/moment.min.js') }}"></script>
+<script data-navigate-once src="{{ asset('assets/backend/js/chart/apex-chart/apex-chart.js') }}"></script>
+<script data-navigate-once src="{{ asset('assets/backend/js/chart/apex-chart/stock-prices.js') }}"></script>
+<script data-navigate-once src="{{ asset('assets/backend/js/chart/apex-chart/chart-custom1.js') }}"></script>
+
+
+<!-- slick slider js -->
+<script data-navigate-once src="{{ asset('assets/backend/js/slick.min.js') }}"></script>
+<script data-navigate-once src="{{ asset('assets/backend/js/custom-slick.js') }}"></script>
+@endpush
